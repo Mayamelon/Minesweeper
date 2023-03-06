@@ -172,6 +172,19 @@ public class Hexagon {
   }
   
   public void reveal() {
+    if (revealed) {
+      int sum = 0;
+      for (int i = 0; i < neighbors.length; i++) {
+        if (neighbors[i].isFlagged()) sum++;
+      }
+      if (sum != countNeighbors()) return;
+      for (int i = 0; i < neighbors.length; i++) {
+        if (!neighbors[i].isFlagged() && !neighbors[i].isRevealed()) {
+          neighbors[i].reveal();
+        }
+      }
+      return;
+    }
     revealed = true;
     if (bomb) {
       myColor = color(240, 63, 84);
@@ -182,6 +195,10 @@ public class Hexagon {
   
   public void flag() {
     flagged = !flagged;
+  }
+  
+  public boolean isFlagged() {
+    return flagged;
   }
 
   public boolean isOver(double x, double y) {
