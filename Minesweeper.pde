@@ -3,10 +3,10 @@ private boolean isLost = false;
 
 void setup() {
   size(1280, 720);
-  hexes = new Hexagon[23][14];
+  hexes = new Hexagon[14][23];
   for (int i = 0; i < hexes.length; i++) {
     for (int j = 0; j < hexes[i].length; j++) {
-      hexes[i][j] = new Hexagon(((j%2==0) ? i : i+0.5)*30*Math.sqrt(3)+60, j*(30*Math.sqrt(3)/2)*Math.sqrt(3)+70, 30, color(255, 244, 121));
+      hexes[i][j] = new Hexagon(((i%2==0) ? j : j+0.5)*30*Math.sqrt(3)+60, i*(30*Math.sqrt(3)/2)*Math.sqrt(3)+70, 30, color(255, 244, 121));
     }
   }
   
